@@ -12,3 +12,11 @@ Mongo connection URL
 ```
 mongodb://root:password@localhost:27017/?authSource=admin
 ```
+
+
+## Eslint 
+npx eslint --init
+
+
+## Husky 
+npx mrm lint-staged
