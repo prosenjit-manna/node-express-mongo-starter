@@ -4,12 +4,15 @@ const app = express();
 import  { mongodbConnect } from './service/db-connection.js';
 import userRouter from './module/user/user.route.js';
 import { appEnv } from './env.js';
+import { requestResponseLogger } from './middleware/logger.middleware.js';
 
 mongodbConnect();
 
 
 // Middleware
 app.use(express.json());
+app.use(requestResponseLogger);
+
 
 // Routes
 app.get('/', (req, res) => {
