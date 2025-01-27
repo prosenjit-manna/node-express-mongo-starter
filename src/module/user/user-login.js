@@ -10,6 +10,11 @@ export async function userLogin(req, res) {
     if (!user) {
       return res.status(401).json({ error: "Authentication failed" });
     }
+
+    if (!user.isVerified) {
+      return res.status(401).json({ message: "User not verified" });
+    }
+    
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
       return res.status(401).json({ error: "Authentication failed" });
