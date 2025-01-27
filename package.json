@@ -4,8 +4,8 @@
   "description": "Node Express MongoDB Starter",
   "type": "module",
   "scripts": {
-    "nodemon": "nodemon",
-    "start:dev": "npm run nodemon src/index.js",
+    "start": "node src/index.js",
+    "start:dev": "nodemon",
     "lint": "eslint .",
     "prepare": "husky install"
   },

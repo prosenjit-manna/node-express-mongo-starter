@@ -1,0 +1,5 @@
+{
+    "watch": ["src"],
+    "ext": "js",
+    "exec": "yarn lint && node src/index.js"
+  }
