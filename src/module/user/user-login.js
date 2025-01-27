@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { UserModel } from "../../model/user.mongo.js";
 import { appEnv } from "../../env.js";
+import SessionModel from "../../model/session.mongo.js";
 
 export async function userLogin(req, res) {
   try {
@@ -29,7 +30,15 @@ export async function userLogin(req, res) {
         expiresIn: appEnv.JSON_WEB_TOKEN_EXPIRY,
       }
     );
-    res.status(200).json({ token });
+    const refreshToken = jwt.sign(
+      { userId: user._id },
+      appEnv.JSON_WEB_TOKEN_SECRET,
+      {
+        expiresIn: appEnv.JSON_WEB_REFRESH_TOKEN_EXPIRY,
+      }
+    );
+    await SessionModel.create({ user: user._id });
+    res.status(200).json({ token, refreshToken });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -6,6 +6,8 @@ import { authMiddleWare } from '../../middleware/auth-middleware.js';
 import { currentUser } from './current-user.js';
 import { VerifySignup } from './verify-signup.js';
 import { verifyEmailMiddleware } from '../../middleware/verify-email.middleware.js';
+import { regenerateToken } from './regenerate-token.js';
+import { userLogout } from './user-logout.js';
 
 const userRouter = express.Router();
 
@@ -14,6 +16,8 @@ userRouter.post('/login', userLogin);
 userRouter.get('/current-user', authMiddleWare, currentUser);
 userRouter.get('/get-user/:id', authMiddleWare, getUser);
 userRouter.get('/verify-signup', verifyEmailMiddleware, VerifySignup);
+userRouter.get('/logout', authMiddleWare, userLogout);
+userRouter.get('/regenerate-token', authMiddleWare, regenerateToken);
 
 
 export default userRouter;

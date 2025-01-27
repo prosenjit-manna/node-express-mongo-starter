@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import { appEnv } from "../env.js";
 import User from "../model/user.mongo.js";
+import SessionModel from "../model/session.mongo.js";
 
 export async function authMiddleWare(req, res, next) {
   const token = req.header("Authorization");
@@ -16,9 +17,11 @@ export async function authMiddleWare(req, res, next) {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    if (!user.isVerified) {
-      return res.status(401).json({ message: "User not verified" });
+    const session = await SessionModel.findOne({ user: req.userId });
+    if (!session) {
+      return res.status(404).json({ message: "Session not found" });
     }
+    req.user = user;
     next();
   } catch (error) {
     res.status(401).json({ error: error.message });
