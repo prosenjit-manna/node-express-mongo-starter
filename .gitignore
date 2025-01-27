@@ -5,3 +5,4 @@ node_modules
 .pnp.cjs
 .eslintcache
 package-lock.json
+tmp
