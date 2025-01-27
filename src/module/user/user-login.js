@@ -6,10 +6,12 @@ import { appEnv } from "../../env.js";
 export async function userLogin(req, res) {
   try {
     const { email, password } = req.body;
-    const user = await UserModel.findOne({ email }, { password: 1 });
+    const user = await UserModel.findOne({ email }, { password: 1, isVerified: 1 });
     if (!user) {
       return res.status(401).json({ error: "Authentication failed" });
     }
+
+    
 
     if (!user.isVerified) {
       return res.status(401).json({ message: "User not verified" });
