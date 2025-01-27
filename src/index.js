@@ -1,9 +1,9 @@
 import express from 'express';
-import  { mongodbConnect } from './service/db-connection.js';
-
-
 const app = express();
-const port = process.env.PORT || 3000;
+
+import  { mongodbConnect } from './service/db-connection.js';
+import userRouter from './module/user/user.route.js';
+import { appEnv } from './env.js';
 
 mongodbConnect();
 
@@ -16,7 +16,9 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+app.use('/api/user', userRouter);
+
 // Start server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(appEnv.PORT, () => {
+  console.log(`Server is running on port ${appEnv.PORT}`);
 });
