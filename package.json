@@ -34,8 +34,10 @@
     "mongoose": "^8.9.5",
     "nodemailer": "^6.10.0",
     "nodemailer-express-handlebars": "^7.0.0",
+    "sanitize-html": "^2.14.0",
     "winston": "^3.17.0",
-    "winston-daily-rotate-file": "^5.0.0"
+    "winston-daily-rotate-file": "^5.0.0",
+    "zod": "^3.24.1"
   },
   "lint-staged": {
     "*.js": "yarn eslint --cache --max-warnings 0"
