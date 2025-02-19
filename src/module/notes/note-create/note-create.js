@@ -1,4 +1,4 @@
-import NoteModel from "../../../model/note.mongo.js";
+import NoteModel from "../note.mongo.js";
 
 export async function noteCreate(req, res) {
   try {

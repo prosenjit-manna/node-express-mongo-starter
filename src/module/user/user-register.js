@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { UserModel } from "../../model/user.mongo.js";
+import { UserModel } from "../user/user.mongo.js";
 import { sendEmail } from "../../service/send-email.js";
 import jwt from "jsonwebtoken";
 import { appEnv } from "../../env.js";

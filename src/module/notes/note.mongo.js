@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import User from '../model/user.mongo.js';
+import User from '../user/user.mongo.js';
 
 const noteSchema = new mongoose.Schema({
   title: {

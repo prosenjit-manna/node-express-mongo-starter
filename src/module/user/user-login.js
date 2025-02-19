@@ -1,8 +1,8 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { UserModel } from "../../model/user.mongo.js";
+import { UserModel } from "./user.mongo.js";
 import { appEnv } from "../../env.js";
-import SessionModel from "../../model/session.mongo.js";
+import SessionModel from "./session.mongo.js";
 
 export async function userLogin(req, res) {
   try {
@@ -38,7 +38,7 @@ export async function userLogin(req, res) {
       }
     );
     await SessionModel.create({ user: user._id });
-    res.status(200).json({ token, refreshToken });
+    res.json({ token, refreshToken });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

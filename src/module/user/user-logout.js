@@ -1,4 +1,4 @@
-import SessionModel from "../../model/session.mongo.js";
+import SessionModel from "../user/session.mongo.js";
 
 export async function userLogout(req, res) {
   try {

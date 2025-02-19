@@ -1,4 +1,4 @@
-import User from "../../model/user.mongo.js";
+import User from "../user/user.mongo.js";
 
 export async function VerifySignup(req, res) {
   const id = req.userId;

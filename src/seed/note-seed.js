@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
-import Notes  from "../model/note.mongo.js";
-import User from "../model/user.mongo.js";
+import Notes  from "../module/notes/note.mongo.js";
+import User from "../module/user/user.mongo.js";
 
 export const seedNotes = async (numNotes = 10) => {
   try {

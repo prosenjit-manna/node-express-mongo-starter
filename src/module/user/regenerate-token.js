@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { appEnv } from "../../env.js";
-import SessionModel from "../../model/session.mongo.js";
+import SessionModel from "../user/session.mongo.js";
 
 export async function regenerateToken(req, res) {
   try {

@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { appEnv } from "../env.js";
-import User from "../model/user.mongo.js";
-import SessionModel from "../model/session.mongo.js";
+import User from "../module/user/user.mongo.js";
+import SessionModel from "../module/user/session.mongo.js";
 
 export async function authMiddleWare(req, res, next) {
   const token = req.header("Authorization");
@@ -24,6 +24,7 @@ export async function authMiddleWare(req, res, next) {
     req.user = user;
     next();
   } catch (error) {
+    console.log(error);
     res.status(401).json({ error: error.message });
   }
 }
